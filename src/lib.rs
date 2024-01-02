@@ -1,9 +1,21 @@
+/// Removes all key value pairs from a query string that matches a given key,
+/// and returns the new query string.
+///
+/// # Examples
+///
+/// ```
+/// use query_stripper::remove_query_string;
+///
+/// assert_eq!(remove_query_string("a=5&b=3&c=2&b=7", "b"), "a=5&c=2");
+/// ```
 pub fn remove_query_string(query_str: &str, key: &str) -> String {
     const SEPARATOR: &str = "&";
 
+    let key_eq = format!("{key}=");
+
     query_str
         .split(SEPARATOR)
-        .filter(|p| !p.starts_with(&format!("{}=", key)))
+        .filter(|p| !p.starts_with(&key_eq))
         .collect::<Vec<&str>>()
         .join(SEPARATOR)
 }
