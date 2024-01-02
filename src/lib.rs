@@ -1,24 +1,3 @@
-fn main() {
-    println!("{}", remove_query_string("", "instanceId"));
-    println!("{}", remove_query_string("instanceId=1234", "instanceId"));
-    println!(
-        "{}",
-        remove_query_string("instanceId=1234&x=5&y=6", "instanceId")
-    );
-    println!(
-        "{}",
-        remove_query_string("a=5&instanceId=1234&x=5&y=6", "instanceId")
-    );
-    println!(
-        "{}",
-        remove_query_string("a=5&x=5&y=6&instanceId=1234", "instanceId")
-    );
-    println!(
-        "{}",
-        remove_query_string("a=5&x=5&y=6&binstanceId=1234", "instanceId")
-    );
-}
-
 pub fn remove_query_string(query_str: &str, key: &str) -> String {
     const SEPARATOR: &str = "&";
 
